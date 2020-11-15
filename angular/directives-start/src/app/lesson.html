@@ -1,0 +1,33 @@
+<!-- we can use the item of ngfor anywhere inside the element on which we use the ngfor -->
+<!-- we can't have more than one structural directive on an element -->
+
+<!-- access the host by elementRef (highlight) -->
+<!-- access the host by renderer (better-highlight) -->
+<!-- bind the host's propeties by @hostbinding (better-highlight)-->
+<!-- add event listener to the host by @hostlistener (better-highlight)-->
+
+<!-- with native element we can use all the js methods an element has -->
+
+
+<!-- bind properties that declare in the directive. 
+  Self: it is like properties in the directive are available in the element on which it is put -->
+<p appBetterHighlight [highlightColor]="'yellow'" [defaultColor]="'blue'" >i have a better directive</p>
+
+
+<!--  test using native method (appts) -->
+
+
+<!-- *ngif behind the scence -->
+<ng-template [ngIf]="onlyOdd">
+  <p>Only odd</p>
+</ng-template>
+
+<p *ngIf="!onlyOdd">Only even</p>
+
+
+
+<!-- my own unless -->
+<p *appUnless="onlyOdd">my unless directive</p>
+
+
+<!-- ngSwitch -->

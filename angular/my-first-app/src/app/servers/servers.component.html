@@ -1,0 +1,31 @@
+<div class="container">
+  <button [class]='pri' [disabled]='allowNewServer' (click)='onClickHandler()' >Add server</button>
+  <!-- <p [innerText]='serverStatus'></p> -->
+  <p *ngIf="serverCreated; else noServer">{{serverStatus}}</p>
+  <!-- '*' means this directive really change the doom structure -->
+  <ng-template #noServer>
+    <p>No server was created</p>
+  </ng-template>
+  <!-- <input type="text" (input)='updateServerName($event)'>
+  <p>{{serverName}}</p> -->
+  
+   <!-- with 2 ways binding -->
+  <input type="text" [(ngModel)]='serverName'>
+  
+  <!-- assignment -->
+  <hr>
+  <h1>ASSIGNMENT</h1>
+  <input type="text" name="" id="" [(ngModel)]='keyStroke'>
+  <p>{{keyStroke}}</p>
+  <button class="btn btn-success" [disabled]='!keyStroke' (click)='keyStroke = ""' >Reset</button>
+
+  <app-server *ngFor="let server of servers"></app-server>
+
+  <!-- ASSIGNMENT -->
+  <hr>
+  <h1>ASSIGNMENT</h1>
+  <button class="btn btn-primary" (click)="displayDetail()">Display detail</button>
+  <p *ngIf="!isHidden">Luck is something you can own</p>
+  <!-- <p *ngFor="let item of count; index as i" [ngClass]="{already: i > 3}" [ngStyle]="i > 3 ? {fontWeight: 'bold'} : {}">{{item}}</p> -->
+  <p *ngFor="let item of count; let i = index" [ngClass]="{already: i > 3}" [ngStyle]="{fontWeight: i > 3 ? 'bold' : 'normal'}">{{item}}</p>
+</div>

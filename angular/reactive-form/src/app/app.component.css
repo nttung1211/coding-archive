@@ -1,0 +1,19 @@
+:host {
+  --error: #f55;
+}
+
+label {
+  text-transform: capitalize;
+}
+
+form {
+  width: 40%;
+}
+
+.ng-invalid:not(form):not(.formGroup).ng-touched {
+  border: 1px solid var(--error);
+}
+
+.err-msg {
+  color: var(--error);
+}

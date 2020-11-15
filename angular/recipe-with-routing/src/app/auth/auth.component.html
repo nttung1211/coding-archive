@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-sm-6">
+    <!-- + Approach 1: simple box -->
+    <!--
+       <div *ngIf="error">
+      <div class="alert alert-danger">{{error}}</div>
+    </div> 
+    -->
+    <!-- + Approach 2: dynamic component with ngIf-->
+    
+    <app-alert *ngIf="error" [message]="error" (errorClosed)="error = null"></app-alert>
+    <div *ngIf="isLoading">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    
+    <!-- + Approach 1: programatically dynamic component -->
+    <!-- 
+      
+     -->
+    <form (ngSubmit)="onSubmit()" [formGroup]="authForm" *ngIf="!isLoading">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control" type="email" name="email" id="email" autofocus
+          formControlName="email" 
+        >
+        <small class="error"
+          *ngIf="authForm.get('email')['invalid'] && !authForm.get('email')['pristine']"
+        >
+          Please enter a valid email.
+        </small>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" name="password" id="password"
+          formControlName="password"
+        >
+        <small class="error"
+          *ngIf="authForm.get('password')['invalid'] && !authForm.get('password')['pristine']"
+        >
+          Invalid password.
+        </small>
+      </div>
+      <button class="btn btn-success btn-block" [disabled]="authForm.invalid">{{isLoginMode ? 'Login' : 'Sign Up'}}</button>
+      <hr>
+      <button class="btn btn-primary btn-block" type="button" (click)="onSwitchMode()">
+        Switch to {{!isLoginMode ? 'Login' : 'Sign Up'}}
+      </button>
+    </form>
+  </div>
+</div>

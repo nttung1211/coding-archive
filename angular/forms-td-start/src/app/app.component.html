@@ -1,0 +1,105 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <!-- 
+          - onSubmit() will be triggered when the default behavior is triggered (when the form is submitted)
+          
+          - #f="ngForm" tell angular to give us the form data object that is created automatically by angular
+        -->
+        <div class="group" id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
+          <!-- ngModelGroup="userData" : (self) just naming the object but not acctually use -->
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input 
+              type="text" 
+              id="username" 
+              class="form-control"
+              name="username"
+              autocomplete="off"
+              [(ngModel)]="usernameInp"
+              required
+              #username="ngModel" 
+            >
+            <p class="err-msg" *ngIf="username.invalid && username.touched">Please enter valid username</p>
+            <!-- angular handles "required" as a directive -->
+          </div>
+          <button class="btn btn-default" type="button" (click)="suggestUserName()">Suggest an Username</button>
+          <div class="form-group">
+            <label for="email">Mail</label>
+            <input 
+              type="email" 
+              id="email" 
+              class="form-control"
+              name="email"
+              ngModel
+              email
+              required
+              #email="ngModel"
+            >
+            <p class="err-msg" *ngIf="email.invalid && email.touched">Please enter valid email</p>
+          </div>
+
+          <div class="radio" *ngFor="let gender of genders ">
+            <label>
+              <input 
+                type="radio" 
+                name="gender" 
+                [value]="gender"
+                [ngModel]="genders[0]"
+                required
+              >
+              {{gender}}
+            </label>
+          </div>
+          <!-- <div class="radio">
+            <label>
+              <input type="radio" name="gender" value="male" ngModel #gender="ngModel" required>
+              Male
+            </label>
+            <label>
+              <input type="radio" name="gender" value="female" ngModel>
+              Female
+            </label>
+          </div> -->
+          <!-- <p class="err-msg" *ngIf="genderInp.pristine">Please select gender</p> -->
+          </div>
+        <p class="err-msg" *ngIf="userData.invalid && userData.touched">Please Provide your information</p>
+
+
+        <div class="form-group">
+          <label for="secret">Secret Questions</label>
+          <select 
+            id="secret" 
+            class="form-control"
+            name="secret"
+            [ngModel]="'pet'"
+            required
+            #secret="ngModel"
+          >
+          <!-- [ngModel]="'pet'" : using one way binding to set the default value for this input  -->
+            <option value="pet" selected>Your first Pet?</option>
+            <option value="teacher">Your first teacher?</option>
+          </select>
+          <p class="err-msg" *ngIf="secret.invalid && secret.touched">Please select a question</p>
+        </div>
+
+        <div class="form-group">
+          <textarea 
+            name="answer" 
+            rows="3"
+            class="form-control"
+            [(ngModel)]="answerValue"
+            required
+            #answer="ngModel"
+          ></textarea>
+          <p class="err-msg" *ngIf="answer.invalid && answer.touched">Please provide an answer</p>
+        </div>
+        <!-- still can use two ways binding -->
+        <p>{{answerValue}}</p>
+
+        <button class="btn btn-primary" type="submit" [disabled]="f.invalid">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

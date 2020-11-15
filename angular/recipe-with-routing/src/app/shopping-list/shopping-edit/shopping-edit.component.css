@@ -1,0 +1,12 @@
+:host {
+  --err: #f55;
+}
+
+.btn {
+  margin: 10px 3px;
+  width: 80px;
+}
+
+.err {
+  color: var(--err);
+}

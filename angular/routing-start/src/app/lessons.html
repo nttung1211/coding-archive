@@ -1,0 +1,26 @@
+<!-- the "routerLink" attribute (on html) just changes the url and passes variables -->
+
+<!-- *CHILD ROUTE* -->
+<!-- if we set :
+{ 
+  path: 'users', 
+  component: UsersComponent,
+  children: [
+    { 
+      path: ':id/:name', 
+      component: UserComponent 
+    }
+  ]
+}
+
+- every path has the form: /users/abc123/abc123 will be child of the '/users' and render the 'UserComponent' replacing <router-outlet> in the users.component.html or its child (but only one will be rendered).
+- if a path is declare as a parent, every <router-outlet> put in it or its child will render the specified component in routing-module.
+
+-->
+
+
+<!-- RESOLVER -->
+<!-- 
+  1. Purpose
+  By implementing Resolver, we are going to fetch remote data from the server before the next component activatedRoute is activated, so there’s no need for a loading spinner (viewed or hidden), as we won’t navigate to the next component until the data is retrieved from the remote server.
+ -->

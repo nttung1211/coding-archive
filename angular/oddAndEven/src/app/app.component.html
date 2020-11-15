@@ -1,0 +1,4 @@
+<div class="container">
+  <app-control (thisCounting)="add($event)" (thisReset)="(reset())"></app-control>
+  <app-num *ngFor="let element of elements" [thisElement]="element"></app-num>
+</div>

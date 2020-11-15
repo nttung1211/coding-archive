@@ -1,0 +1,11 @@
+label, option {
+  text-transform: capitalize;
+}
+
+form {
+  width: 50%;
+}
+
+.err-msg {
+  color: #f55;
+}

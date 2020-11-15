@@ -1,0 +1,17 @@
+<!-- how to create a service (account.ts) -->
+
+<!-- hierarchi of injection
+- When the component is created, angular will instantiate the service its use and pass into the constructor function. The instance created is available to all the children of the component. 
+- to use that instance from a child we just do not provide the provider (otherwise angular will instantiate a new object based on the provider which will override the passed instance)
+- the highest level to place providers is in the app.module.ts
+- every class has decorator pluged in is injectable. Since services don't have a decorators, if we want to inject a service into we need to add @injectable up onto the service. But we might want to add @injectable onto every service
+-->
+
+<!-- event emitting service -->
+
+<!-- 
+  Instead of adding a service class to the providers[]  array in AppModule , you can set the following config in @Injectable() :
+  
+@Injectable({providedIn: 'root'})
+export class MyService { ... }
+ -->

@@ -1,0 +1,46 @@
+<!-- local reference or local reference with viewChild(). Do not use document method in Angular(cockpit)
+* with local reference we get native elements
+-->
+<input type="text" class="form-control" #serverInput>
+
+<!-- ng-content 
+
+  1.use when :
+  - we want to pass a long logic into the child component
+  - when a logic is used multiple time
+  - when we want to use directly data from the parent with out having to pass through property binding
+
+-->
+
+<!-- contentChild vs viewChild:
+       
+  - view: get access to the element of the view as it looks or the shadow doom (from cockpit ts get access to the element in cockpit html ) 
+
+  * if we use the selected element in side ngOninit we need to pass a second element ({ static: true }) to the viewChild.
+  * with viewChild we get elementRefs.
+
+  - content: get access to the element of the content as it really is (after being rendered) or the light doom (from server-element ts get access to the element in server-element html which is lexically written in the app ts)
+
+-->
+
+
+
+<!-- makeing event @output (app) -->
+<app-cockpit 
+(thisServerCreated)="onAddServer($event)"
+(thisBlueprintCreated)="onAddBlueprint($event)"
+>
+
+</app-cockpit>
+
+
+<!-- custom property binding @input (app) -->
+<app-server-element 
+      *ngFor="let element of serverElements" 
+      [thisElement]="element">
+</app-server-element>
+
+<!-- ng-content (server-element, app)-->
+<ng-content select="[contentAtt]"></ng-content>
+
+<!-- LIFE CYCLE -->

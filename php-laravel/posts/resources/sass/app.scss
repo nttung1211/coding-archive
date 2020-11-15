@@ -1,0 +1,18 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+
+// posts
+@import "posts/index";
+@import "posts/show";
+
+.list-group-item:hover {
+	filter: brightness(.9);
+}
+

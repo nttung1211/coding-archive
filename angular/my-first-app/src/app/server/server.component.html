@@ -1,0 +1,2 @@
+<p [ngStyle]="{ color: getColor(), 'background-color': '#eee' }" [ngClass]="{online: serverStatus === 'online'}">Server with ID {{serverID}} is {{getStatus()}}</p>
+<!-- ngStyle is an angular native atribute then we need to use property binding to modify it just like we do with 'disabled' -->

@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button
+        class="btn btn-primary"
+        (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
+        <!-- <p #testcolor>tungdep</p> -->
+      <br><br>
+      <ul class="list-group">
+        <li
+          class="list-group-item">
+        </li>
+      </ul>
+
+
+
+      <!-- *ngif behind the scence -->
+      <ng-template [ngIf]="onlyOdd">
+        <p>Only odd</p>
+      </ng-template>
+
+      <p *ngIf="!onlyOdd">Only even</p>
+
+
+
+      <!-- my own unless -->
+      <p *appUnless="onlyOdd">my unless directive</p>
+
+      
+
+      <!-- ngSwitch -->
+      <div [ngSwitch]="value">
+        <div *ngSwitchCase="1 + 2">is 3</div>
+        <div *ngSwitchCase="1 + 1">is 2</div>
+        <div *ngSwitchDefault>is null</div>
+      </div>
+
+
+
+      <p appHighlight>i have my own directive</p>
+
+      <!-- <p appBetterHighlight [highlightColor]="'yellow'" [defaultColor]="'blue'">i have a better directive</p> -->
+
+      <p [appBetterHighlight]="'blue'" highlightColor="yellow">i have a better directive</p> <!-- we can use the directive itself as a property by using alias for the property.  We can ommit the square bracket and the single quote if we are dealing with string (need to be both at the same time)-->
+    </div>
+  </div>
+</div>

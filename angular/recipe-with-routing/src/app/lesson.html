@@ -1,0 +1,45 @@
+<!-- when naming events we should name them differently to avoid event propagation -->
+
+<!-- /* we can not do this way because the app.ts will listen to the event first and then render this component before this component listens to the event and update this.selectedRecipe, hence it will be undefined at first and delayed a turn later*/ (SEE RECIPE-DETAIL FOR MORE INFOMATION)
+/* we should not listen to an event from many different components which work dependently to each other */ -->
+
+<!-- we still use event to update on runtime  because we should not reference directly data  -->
+
+<!-- when we have not been to a component on the web, its code component is also has not been read -->
+
+
+<!-- you need to know what the path is when the component is rendered to determine the relative path. (recipe-list.html)-->
+
+
+<!-- + observable -->
+
+<!-- 
+
+- other pipeable operators would wrap the return value of its callback into an observable to pass on.
+- exhaustMap passes on the return value of its callback
+- errorCatch:
+  -- passes on the return value of its callback (offen from 'throwError'  or 'of')
+  -- reference: https://blog.angular-university.io/rxjs-error-handling/
+
+
+ -->
+
+
+ <!-- + module -->
+ <!--
+- every module works on its own in angular, they don't comunicate to each other 
+- we import other modules in the app module just to let the agular compiler know that they are included in the app (then the routing can work)
+- we also import other modules to use the components that the others modules export if we need 
+- within a module, components can use each other (we can place selector of one component in the html of another )
+- we have to declare every component that we embed in to other components or loading them through the routing system
+
+- we dont need to have core module since we often provide services by { provideIn: 'root' }
+-->
+
+<!--+ services and module -->
+<!-- 
+  when we provide a service in :
+  - app module or @injectable: the service is app-wide available
+  - normal module: the same in app module but not recommended due to unexpected behaviors
+  - lazy module: generate another object result in using two separate service objects
+  -->

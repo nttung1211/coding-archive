@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <form class="mx-auto mt-5"
+      (ngSubmit)="onSubmit()"
+      [formGroup]="myForm"
+    >
+
+      <div class="form-group">
+        <label for="projectName">project Name:</label>
+        <input class="form-control" type="text" name="projectName" id="projectName" autocomplete="off"
+          formControlName="projectName"
+        >
+
+        <div *ngIf="myForm.get('projectName')['invalid'] && !myForm.get('projectName')['pristine']">
+          <small class="err" *ngIf="myForm.get('projectName')['errors'].required">
+            Please enter project name
+          </small>
+          <small class="err" *ngIf="myForm.get('projectName')['errors'].isForbidden">
+            Invalid project name
+          </small>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">email:</label>
+        <input class="form-control" type="text" name="email" id="email" autocomplete="off"
+          formControlName="email"
+        >
+        <small class="err" *ngIf="myForm.get('email')['invalid'] && !myForm.get('email')['pristine']">
+          Please enter your email address
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <select class="form-control" name="status" id="status"
+          formControlName="status"
+        >
+          <option *ngFor="let status of statusTypes" [value]="status">{{status}}</option>
+        </select>
+        <small class="err" *ngIf="myForm.get('status')['invalid'] && !myForm.get('status')['pristine']">
+          Please select status
+        </small>
+      </div>
+
+      <button class="btn btn-primary">Submit</button>
+
+    </form>
+  </div>
+</div>

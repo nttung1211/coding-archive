@@ -1,0 +1,21 @@
+.container {
+  margin-top: 30px;
+}
+
+.ng-invalid:not(form):not(.group).ng-touched {
+  border: 1px solid rgb(255, 131, 131);
+}
+
+.ng-valid:not(form):not(.group).ng-dirty {
+  border: 1px solid rgb(66, 159, 66);
+}
+
+.err-msg {
+  color: rgb(255, 131, 131);
+}
+
+.group+.err-msg {
+  border: 1px solid red;
+  color: red;
+  padding: 10px;
+}

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <div class="form-group">
+        <button class="btn btn-success" (click)="onAdd()">Add server</button>
+      </div>
+      <hr>
+      <h3>Async status: {{asyncStatus | async}}</h3>
+      <hr>
+      <ul class="list-group">
+        <input class="form-control" type="text"  [(ngModel)]="filterStatus">
+        <hr>
+        <li
+          class="list-group-item"
+          *ngFor="let server of servers | filter : filterStatus : 'status' | sortPipe : 'name'"
+          [ngClass]="getStatusClasses(server)">
+          <span
+            class="badge">
+            {{ server.status }}
+          </span>
+          <strong>{{ server.name }}</strong> | 
+          {{ server.instanceType | uppercase }} | 
+          {{ server.started | date: 'fullDate' | uppercase }}
+          <!-- to provide more parameter just separate them with a semicolon -->
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

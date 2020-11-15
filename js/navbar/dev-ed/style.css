@@ -1,0 +1,207 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --second: #5d4954;
+  --white: #eee;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+body { 
+  font-family: 'Poppins', sans-serif;
+  background: grey;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  background : var(--second);
+  height: 10vh;
+  padding: 10px;
+}
+
+.logo {
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 1.3rem;
+  padding: 20px;
+}
+
+.navbar {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar-right {
+  width: 20%;
+}
+
+.navbar-left {
+  width: 40%;
+}
+
+.navbar-right, .navbar-left {
+  justify-content: space-around;
+  display: flex;
+}
+
+.navbar-item a {
+  display: block;
+  color: var(--white);
+  letter-spacing: 2px;
+  padding: 20px;
+}
+
+.navbar-item {
+  position: relative;
+}
+
+.navbar-item::before {
+  content: '';
+  display: block;
+  position: absolute; /* then this won't push the .navbar-item down */
+  top: 0;
+  left: 20px;
+  right: 20px; /* instead of having the width 100% */
+  height: 5px;
+  border-radius: 3px;
+  background: var(--white);
+  transform: scale(0, 1);
+  transition: transform .25s;
+}
+
+.navbar-item:hover::before {
+  transform: scale(1, 1);
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+.line {
+  width: 28px;
+  height: 3px;
+  background: var(--white);
+  margin: 7px;
+  transition: .5s;
+  transform-origin: left;
+}
+
+@media screen and (max-width:1023px) {
+  body {
+    overflow: hidden;
+  }
+
+  .burger {
+    display: block;
+  }
+  
+  /* .navbar {
+    background: var(--second);
+    position: absolute;
+    top: 10vh;
+    left: 0;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+    padding: 15px;
+    transition: transform .4s;
+    transform: scale(1, 1);
+    transform-origin: top;
+  }
+
+  .navbar:not(.show) {
+    overflow: hidden;
+    transform: scale(1, 0);
+  } */
+  
+  .navbar {
+    background: var(--second);
+    position: absolute;
+    top: 10vh;
+    right: 0;
+    flex-direction: column;
+    width: 30%;
+    height: 90vh;
+    padding: 15px;
+    justify-content: start;
+    transform: translateX(100%);
+    transition: transform .5s ease-out;
+  }
+  
+  .navbar.show {
+    transform: translateX(0%);
+  }
+  
+  .navbar-item {
+    padding: 15px;
+    text-align: center;
+    transition: opacity .2s;
+    opacity: 0;
+  }
+
+  .navbar-item::before {
+    all: unset;
+  }
+
+  .navbar-item:hover {
+    background: var(--white);
+  }
+  
+  .navbar-item:hover a {
+    color: var(--second);
+  }
+  
+  .navbar.show .navbar-item {
+    transition: opacity .2s ease .2s;
+    opacity: 1;
+  }
+
+  .navbar-right, .navbar-left {
+    flex-direction: column;
+    width: 100%;
+  } 
+
+  nav {
+    justify-content: space-between;
+  }
+
+  .open .line1 {
+    transform: rotate(45deg);
+  }
+  
+  .open .line2 {
+    opacity: 0;
+  }
+
+  .open .line3 {
+    transform: rotate(-45deg);
+  }
+
+
+}
+
+/* .con {
+  background: red;
+  padding: 20px;
+} */
+
+.box {
+  background: green;
+  width: 100px;
+  height: 100px;
+  transform: scale(1, 0);
+}

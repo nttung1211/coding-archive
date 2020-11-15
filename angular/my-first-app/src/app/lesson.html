@@ -1,0 +1,24 @@
+<!-- we can embed a component using one of the following css selectors: tag-name, .class, [attribute] -->
+
+<!-- PROPERTY BINDING -->
+<!-- *** we can use [] to bind almost every property of html
+  * [ng...] are infact directives which have property with the same name
+-->
+<!-- style and class -->
+<p [ngStyle]="{ color: getColor(), 'background-color': '#eee' }" [ngClass]="{online: serverStatus === 'online'}">Server with ID {{serverID}} is {{getStatus()}}</p>
+
+<!-- normal binding -->
+<button [class]='pri' [disabled]='allowNewServer' (click)='onClickHandler()' >Add server</button>
+<!-- <p [innerText]='serverStatus'></p> -->
+
+<!-- ngif -->
+<p *ngIf="serverCreated; else noServer">{{serverStatus}}</p>
+<!-- '*' means this directive really change the doom structure -->
+<ng-template #noServer>
+  <p>No server was created</p>
+</ng-template>
+<!-- <input type="text" (input)='updateServerName($event)'>
+<p>{{serverName}}</p> -->
+
+ <!-- with 2 ways binding -->
+<input type="text" [(ngModel)]='serverName'>

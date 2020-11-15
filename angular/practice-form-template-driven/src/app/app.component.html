@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <form class="mx-auto mt-5" (ngSubmit)="onSubmit()" #formObj="ngForm">
+      <div class="form-group">
+        <label for="email">email</label>
+        <input class="form-control" id="email" type="text" autocomplete="off"
+          name="email"
+          ngModel
+          #emailObj="ngModel"
+          required
+          email
+        >
+        <small class="err-msg" *ngIf="emailObj.invalid && emailObj.touched">
+          Invalid email
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" name="password" id="password"
+          ngModel
+          #passwordObj="ngModel"
+          pattern="^[a-zA-Z0-9]{4,12}$"
+          required
+        >
+        <small class="err-msg" *ngIf="passwordObj.invalid && passwordObj.touched">
+          Invalid password
+        </small>
+      </div>
+      
+      <div class="form-group">
+        <label for="subscription">Subscription type: </label>
+        <select class="form-control" id="subscription"
+          name="subscription"
+          [ngModel]="subscriptions[0]"
+          #subscriptionObj="ngModel"
+          required
+        >
+          <option *ngFor="let sub of subscriptions" [value]="sub">{{sub}}</option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

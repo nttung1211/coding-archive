@@ -1,0 +1,19 @@
+:host {
+  --err: #f55;
+}
+
+form {
+  width: 40%;
+}
+
+.ng-invalid:not(form):not(.ng-pristine) {
+  border: 1px solid var(--err);
+}
+
+label {
+  text-transform: capitalize;
+}
+
+.err {
+  color: var(--err);
+}

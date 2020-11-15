@@ -1,0 +1,8 @@
+<!-- when naming events we should name them differently to avoid event propagation -->
+
+<!-- /* we can not do this way because the app.ts will listen to the event first and then render this component before this component listens to the event and update this.selectedRecipe, hence it will be undefined at first and delayed a turn later*/ (SEE RECIPE-DETAIL FOR MORE INFOMATION)
+/* we should not listen to an event from many different components which work dependently to each other */ -->
+
+<!-- we still use event to update on runtime  because we should not reference directly data  -->
+
+<!-- when we have not been to a component on the web, its code component is also has not been read -->
